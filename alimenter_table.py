@@ -110,46 +110,47 @@ def remplir_les_cours():
     for membre in liste_membres:
         #date_inscri = datetime.datetime(2024, randint(11,12), randint(1, 31), randint(9, 17))
 
-        nb_cours = 3
+        nb_cours = choice([0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,4,4,4,4,4,4,4,4,4,4,4,4,5,5,5,5])
 
-        for cours in range(nb_cours):
-            id_du_cours = recup_cours_id()
-            choisir_un_cours = choice(id_du_cours)
-            date_cours = recup_date_cours(choisir_un_cours)
+        if nb_cours > 0:
+            for _ in range(nb_cours):
+                id_du_cours = recup_cours_id()
+                choisir_un_cours = choice(id_du_cours)
+                date_cours = recup_date_cours(choisir_un_cours)
 
-            date_inscri = datetime.datetime(3000, 12,1)
+                date_inscri = datetime.datetime(3000, 12,1)
 
-            while date_cours < date_inscri:
-                date_inscri = datetime.datetime(2024, randint(11,12), randint(1, 30), randint(0, 23))
-            
-            new_inscription = Inscription(
-            date_inscription= date_inscri,
-            membre_id= membre,
-            cours_id = choisir_un_cours,
-            )
-            with Session(engine) as session:
-                session.add(new_inscription)
-                session.commit()
+                while date_cours < date_inscri:
+                    date_inscri = datetime.datetime(2024, randint(11,12), randint(1, 30), randint(0, 23))
+                
+                new_inscription = Inscription(
+                date_inscription= date_inscri,
+                membre_id= membre,
+                cours_id = choisir_un_cours,
+                )
+                with Session(engine) as session:
+                    session.add(new_inscription)
+                    session.commit()
 
             
 #region main
-def main(n):
-    for i in range(n):
+def main(n_membres : int , n_coachs : int, n_cours : int):
+    for i in range(n_membres):
         nb_membre()
 
     spe_possible = ["Yoga", "Pump", "Pilates", "Musculation", "Boxe"] 
 
-    for i in range(n//6):
+    for i in range(n_coachs):
         new_coach(spe_possible)
 
 
 
+    creation_cours(n_cours)
+    remplir_les_cours()
 
 if __name__ == "__main__":  
 
-    main(40)
+    main(40, 4, 50)
 
-    creation_cours(150)
-    remplir_les_cours()
 
 
