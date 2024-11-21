@@ -12,6 +12,10 @@ class Cartes_acces(SQLModel, table = True):
     # Relation avec Membres, avec le back_populates
     membres: list['Membres'] = Relationship(back_populates="carte_acces")
 
+
+    # Étend la définition existante de cette table si nécessaire
+    __table_args__ = {"extend_existing": True}
+
 class Membres(SQLModel, table = True):
     id : int | None = Field(default = None, primary_key = True)
     nom : str 
@@ -21,6 +25,9 @@ class Membres(SQLModel, table = True):
     carte_acces: "Cartes_acces" = Relationship(back_populates="membres")
 
 
+    # Étend la définition existante de cette table si nécessaire
+    __table_args__ = {"extend_existing": True}
+
 
 
 class Coachs(SQLModel, table = True):
@@ -29,6 +36,9 @@ class Coachs(SQLModel, table = True):
     specialite : str
 
     #cours: list['Cours'] = Relationship(back_populates="cours")
+
+    # Étend la définition existante de cette table si nécessaire
+    __table_args__ = {"extend_existing": True}
 
 class Cours(SQLModel, table = True):
     id : int | None = Field(default = None, primary_key = True)
@@ -41,6 +51,9 @@ class Cours(SQLModel, table = True):
 
     # inscription : list['Inscription'] = Relationship(back_populates= 'inscription')
 
+    # Étend la définition existante de cette table si nécessaire
+    __table_args__ = {"extend_existing": True}
+
 
 class Inscription(SQLModel, table = True):
     id : int | None = Field(default = None, primary_key = True)
@@ -51,6 +64,9 @@ class Inscription(SQLModel, table = True):
 
     cours_id : Optional[int]= Field(default = None, foreign_key= 'cours.id')
     # Cours: "Cours" = Relationship(back_populates="inscription")
+
+    # Étend la définition existante de cette table si nécessaire
+    __table_args__ = {"extend_existing": True}
 
 sqlite_file_name = "database.db"  
 

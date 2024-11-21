@@ -1,5 +1,5 @@
 from creation_table import Membres, engine,Cartes_acces, Coachs, Cours, Inscription
-from sqlmodel import Field, Session, SQLModel, create_engine, select
+from sqlmodel import Field, Session, SQLModel, select
 from faker import Faker
 from random import choice, randint
 import datetime
