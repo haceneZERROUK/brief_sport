@@ -1,5 +1,5 @@
 from creation_table import Membres, engine,Cartes_acces, Coachs, Cours, Inscription
-from sqlmodel import Field, Session, SQLModel, select
+from sqlmodel import Field, Session, select
 from faker import Faker
 from random import choice, randint
 import datetime
@@ -31,9 +31,9 @@ def new_coach(spe_possible):
         coach = Coachs(nom_coach =fake.name(),specialite= specialite_coach)
         session.add(coach)
         session.commit()
-    #spe_possible.remove(specialite_coach)
+    spe_possible.remove(specialite_coach)
 
-#region recup_membres
+#regison recup_membres
 def recup_id_membres():
     with Session(engine) as session:
         id_des_membres= session.exec(select(Membres.id)).all()
@@ -150,7 +150,7 @@ def main(n_membres : int , n_coachs : int, n_cours : int):
 
 if __name__ == "__main__":  
 
-    main(40, 4, 50)
+    main(140, 5, 50)
 
 
 
