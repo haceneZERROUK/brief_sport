@@ -53,17 +53,21 @@ with st.form('manipuler les coach', clear_on_submit= True):
     st.table(table_coach)
 
 
-    colonne1,colonne2,colonne3, colonne4 = st.columns(4)
-    with colonne1:
-        selection_coach = st.selectbox(
-    f"quel coach veux tu supprimer ?",table_coach['nom_coach'])
-    with colonne4:
-        supprimer_ligne = st.form_submit_button('Supprimer le coach')
+    # colonne1,colonne2,colonne3, colonne4 = st.columns(4)
+    # with colonne1, colonne2, colonne3:
+    #     selection_coach = st.selectbox(
+    # f"quel coach veux tu supprimer ?",table_coach['nom_coach'])
+    # with colonne4:
+    #     supprimer_ligne = st.form_submit_button('Supprimer le coach')
 
+    selection_coach = st.selectbox(
+    f"quel coach veux tu supprimer ?",table_coach['nom_coach'])
+
+    supprimer_ligne = st.form_submit_button('Supprimer le coach')
 
     st.divider()
 
-    colonne1,colonne2,colonne3, colonne4 = st.columns(4)
+    colonne1,colonne2 = st.columns(2)
 
     with colonne1:
         ajout_nom_prenom = st.text_input('nom du nouveau coach')
@@ -72,8 +76,9 @@ with st.form('manipuler les coach', clear_on_submit= True):
         specialite_coach = st.selectbox('ajouter une spécialité', table_coach['specialite'] )
         
         
-    with colonne4:
-        ajouter_un_coach = st.form_submit_button('ajouter coach')
+    # with colonne4:
+    #     ajouter_un_coach = st.form_submit_button('ajouter coach')
+    ajouter_un_coach = st.form_submit_button('ajouter coach')
         
 
 

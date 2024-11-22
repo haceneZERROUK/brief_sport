@@ -91,7 +91,7 @@ def creation_cours(nb_cours : int):
             capacite_max = 8
 
             new_cours = Cours(
-                nom_cours=f"cours de {specialite_cours} le {horaire.day} / {horaire.month} à {horaire.hour}",
+                nom_cours=f"cours de {specialite_cours} le {horaire.day} / {horaire.month} à {horaire.hour} heure",
                 horaire=horaire,
                 capacite_max=capacite_max,
                 coach_id=id_coach_cours

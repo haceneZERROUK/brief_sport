@@ -33,7 +33,7 @@ def supprimer_cours(id_cours):
 def nouveau_cours(specialite_new_cours,coach_spe, mois, jours,heure, annee = 2024):
 
     with Session(engine) as session:
-        new_cours = Cours(nom_cours = f"cours de {specialite_new_cours} le {jours} / {mois} à {heure}",
+        new_cours = Cours(nom_cours = f"cours de {specialite_new_cours} le {jours} / {mois} à {heure} heure",
                          
                           horaire = datetime.datetime(annee, mois, jours, heure),
                           capacite_max= 8,
@@ -60,17 +60,16 @@ with st.form('manipuler les cours', clear_on_submit= True):
     st.table(table_cours)
 
 
-    colonne1,colonne2,colonne3= st.columns(3)
-    with colonne1:
-        selection_cours = st.selectbox(
+
+    selection_cours = st.selectbox(
     f"quel cours veux tu supprimer ?",table_cours['nom_cours'])
-    with colonne3:
-        supprimer_ligne = st.form_submit_button('Supprimer le cours')
+
+    supprimer_ligne = st.form_submit_button('Supprimer le cours')
 
 
     st.divider()
 
-    colonne1,colonne2,colonne3, colonne4 = st.columns(4)
+    colonne1,colonne2,colonne3 = st.columns(3)
 
     with colonne1:
         specialite_cours = st.selectbox('ajouter une spécialité', ["Yoga", "Pump", "Pilates", "Musculation", "Boxe"] )
@@ -82,8 +81,8 @@ with st.form('manipuler les cours', clear_on_submit= True):
         jour_cours = st.selectbox('quelle jour?', [jour for jour in range(1,30)])
         
         
-    with colonne4:
-        ajouter_un_cours = st.form_submit_button('ajouter cours')
+
+    ajouter_un_cours = st.form_submit_button('ajouter cours')
         
 
 
